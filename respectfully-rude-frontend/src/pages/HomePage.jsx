@@ -66,7 +66,7 @@ const HomePage = ({ profiles }) => {
   const navigate = useNavigate();
   return (
     <div className="min-w-screen min-h-screen flex flex-col items-center justify-around py-5">
-      <div className="flex mb-15 justify-around w-screen">
+      <div className="hidden md:flex mb-15 justify-around w-screen">
         <div className="flex items-center border border-[var(--color-foreground)] px-3 w-100 rounded-md hover:border-black h-9">
           <Input
             type="text"
@@ -99,7 +99,7 @@ const HomePage = ({ profiles }) => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-5 gap-x-15 gap-y-10 mb-15">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-15 gap-y-10 mb-15 px-5">
         {selectedProfiles.map((profile, index) => {
           return <Profiles key={profile.id} profile={profile} index={index} />;
         })}

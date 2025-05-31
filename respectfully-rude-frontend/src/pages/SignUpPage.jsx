@@ -10,7 +10,7 @@ const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="grid lg:grid-cols-2 min-w-screen min-h-screen justify-center items-center">
+    <div className="flex flex-col md:flex-row min-w-screen min-h-screen justify-center items-center gap-10 px-10">
       <div className="flex flex-col justify-center items-center">
         <img src={signUpPhoto} alt="Image error" className="w-45" />
         <h1 className="text-3xl font-extrabold text-[var(--color-primary)]">
@@ -24,7 +24,7 @@ const SignUpPage = () => {
         </h2>
       </div>
 
-      <div className="right">
+      <div className="right px-10">
         <h2 className="font-bold text-center text-2xl">Create Account</h2>
         <div className="flex flex-col items-center">
           <form className="flex flex-col items-center">
@@ -61,7 +61,7 @@ const SignUpPage = () => {
               }}
             />
             <Button
-              className="text-base bg-[var(--color-primary)] w-1/3 cursor-pointer hover:bg-[var(--color-secondary)] mt-2"
+              className="text-base bg-[var(--color-primary)] cursor-pointer hover:bg-[var(--color-secondary)] mt-2"
               variant="default"
             >
               Create Account
