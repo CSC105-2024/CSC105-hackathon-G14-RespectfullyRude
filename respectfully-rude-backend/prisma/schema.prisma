@@ -21,15 +21,8 @@ model User {
   email String @unique
   img_url  String    @default("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")
   img_id   String?
-  password Password?
+  password    String
   backhanded_compliment BackhandedCompliment[]
-}
-
-model Password {
-  id      Int    @id @default(autoincrement())
-  user    User   @relation(fields: [user_id], references: [id])
-  hash    String
-  user_id Int    @unique
 }
 
 model BackhandedCompliment{
