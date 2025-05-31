@@ -22,8 +22,6 @@ export const useCreate = () => {
     formData.append("text", course.text);
     formData.append("img", course.img.file);
 
-    console.log(course.img.file);
-
     try {
       const { data } = await axiosInstance.post("backhanded/create", formData, {
         headers: {

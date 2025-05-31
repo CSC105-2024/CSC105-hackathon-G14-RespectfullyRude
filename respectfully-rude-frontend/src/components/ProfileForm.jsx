@@ -6,24 +6,29 @@ import UploadImage from "./UploadImage";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
 import { useCreate } from "@/hooks/useCreateList";
+import { useEditList } from "@/hooks/useEditList";
 
 const ProfileForm = ({ oldForm, mode }) => {
-  console.log(oldForm.name);
   const navigate = useNavigate();
   const { create } = useCreate();
+  const { edit } = useEditList();
+
+  console.log(oldForm.img_url);
 
   const [form, setForm] = useState({
-    name: oldForm.name || "",
-    img: "",
-    text: oldForm.text || "",
+    name: oldForm?.name || "",
+    img: oldForm.img_url || "",
+    text: oldForm?.text || "",
   });
+
+  console.log(form);
 
   const handleSubmit = () => {
     console.log(form);
 
     const promise = async () => {
       if (mode === "edit" && oldForm) {
-        await editCourse(form, oldForm);
+        await edit(form, oldForm);
       } else {
         await create(form);
       }
@@ -60,7 +65,12 @@ const ProfileForm = ({ oldForm, mode }) => {
               value={form.name}
             />
             <div>
-              <UploadImage length={1} mode={mode} setForm={setForm} />
+              <UploadImage
+                length={1}
+                mode={mode}
+                setForm={setForm}
+                oldForm={oldForm}
+              />
             </div>
           </div>
         </div>
