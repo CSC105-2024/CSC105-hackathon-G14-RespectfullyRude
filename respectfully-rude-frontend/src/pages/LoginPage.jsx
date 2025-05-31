@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import FormInput from "../components/FormInput";
 import { Lock, Mail } from "lucide-react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import loginPhoto from "../assets/img11.png";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <div className="flex min-w-screen min-h-screen gap-30 justify-center items-center">
+    <div className="grid lg:grid-cols-2 min-w-screen min-h-screen justify-center items-center">
       <div className="left">
-        <h2 className="font-bold text-2xl">Welcome back</h2>
+        <h2 className="font-bold text-center text-2xl">Welcome back</h2>
         <div className="flex flex-col items-center">
           <form>
             <FormInput
@@ -44,7 +45,9 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-      <div className="right">
+      {/* <div className="border-black border-l-4"></div> */}
+      <div className="right flex flex-col justify-center items-center">
+        <img src={loginPhoto} alt="Image error" className="w-45" />
         <h1 className="text-3xl font-extrabold text-[var(--color-primary)]">
           {" "}
           {/* fix font */}
