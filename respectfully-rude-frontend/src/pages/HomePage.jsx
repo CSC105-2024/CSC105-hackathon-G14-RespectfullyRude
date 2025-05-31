@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 import Footer from "@/components/layout/Footer";
+import { useDataContext } from "@/hooks/useDataContext";
 
 const profilesData = [
   {
@@ -47,20 +48,19 @@ const profilesData = [
   },
 ];
 
-const HomePage = ({ profiles }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedProfiles, setSelectedProfiles] = useState(profilesData);
+const HomePage = () => {
+  const { data } = useDataContext();
+  const [selectedProfiles, setSelectedProfiles] = useState(data);
   const onSearch = (e) => {
     const name = e.target.value.toLowerCase();
-    setSearchTerm(name);
-    const filtered = profilesData.filter((profile) =>
+    const filtered = data.filter((profile) =>
       profile.name.toLowerCase().includes(name)
     );
-    {
-      /*change when integrating*/
-    }
+
     setSelectedProfiles(filtered);
   };
+
+  console.log(selectedProfiles);
 
   const navigate = useNavigate();
   return (
@@ -90,9 +90,17 @@ const HomePage = ({ profiles }) => {
         </div>
       </div>
       <div className="grid grid-cols-5 gap-x-15 gap-y-10 mb-15">
-        {selectedProfiles.map((profile, index) => {
-          return <Profiles key={profile.id} profile={profile} index={index} />;
-        })}
+        {data?.length > 0 ? (
+          selectedProfiles?.map((profile, index) => {
+            return (
+              <Profiles key={profile.id} profile={profile} index={index} />
+            );
+          })
+        ) : (
+          <div className="font-bold text-white h-80 flex items-center mx-auto item-center col-span-4 text-3xl mb-20">
+            No Ugh Lists found
+          </div>
+        )}
       </div>
       <Footer />
     </div>
