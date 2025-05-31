@@ -10,7 +10,7 @@ const Profiles = ({ profile, index }) => {
 
   return (
     <div
-      className="w-40 h-full cursor-pointer hover:shadow-md hover:scale-102 duration-150 p-1"
+      className="w-30 md:w-40 h-full cursor-pointer hover:shadow-md hover:scale-102 duration-150 p-0 md:p-3"
       id={index}
       onClick={() => redirect(profile.id)}
     >
