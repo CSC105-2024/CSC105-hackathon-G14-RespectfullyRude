@@ -1,6 +1,7 @@
 import AlertBox from "@/components/AlertBox";
 import { Button } from "@/components/ui/button";
-import React from "react";
+import { ThumbsDown } from "lucide-react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 
 const profile = {
@@ -12,6 +13,7 @@ const profile = {
 };
 
 const IndividualProfile = () => {
+  const [toggleList, setToggleList] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -22,11 +24,25 @@ const IndividualProfile = () => {
   return (
     <div className="flex flex-col min-w-screen min-h-screen items-center justify-around px-10 py-5">
       <div className="flex flex-col items-center gap-3">
-        <div className="w-40 h-full">
-          <img
-            src={profile.backhanded_img}
-            className="w-full rounded-full aspect-square object-cover"
-          />
+        <div className="flex">
+          <div className="w-40 h-full">
+            <img
+              src={profile.backhanded_img}
+              className="w-full rounded-full aspect-square object-cover"
+            />
+          </div>
+          <div
+            className={`flex absolute right-40 border-[var(--color-accent)] border-1 items-center rounded-full hover:bg-[var(--color-secondary)] cursor-pointer justify-center w-10 h-10 pt-1 ${
+              toggleList ? "bg-[var(--color-primary)]" : "bg-white"
+            } ${
+              toggleList
+                ? "hover:bg-[var(--color-secondary)]"
+                : "hover:bg-gray-100"
+            }`}
+            onClick={() => setToggleList(!toggleList)}
+          >
+            <ThumbsDown color="#FF0808" />
+          </div>
         </div>
 
         <h1 className="text-xl font-bold">{profile.backhanded_name}</h1>

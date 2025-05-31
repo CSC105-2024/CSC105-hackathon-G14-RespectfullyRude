@@ -48,6 +48,7 @@ const profilesData = [
 ];
 
 const HomePage = ({ profiles }) => {
+  const [toggleList, setToggleList] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedProfiles, setSelectedProfiles] = useState(profilesData);
   const onSearch = (e) => {
@@ -84,7 +85,16 @@ const HomePage = ({ profiles }) => {
           >
             <strong>+</strong> Add
           </Button>
-          <div className="flex border-[var(--color-accent)] border-1 items-center bg-[var(--color-primary)] rounded-full cursor-pointer hover:bg-[var(--color-secondary)] justify-center w-10 pt-1">
+          <div
+            className={`flex items-center justify-center w-10 pt-1 rounded-full cursor-pointer border border-[var(--color-accent)] ${
+              toggleList ? "bg-[var(--color-primary)]" : "bg-white"
+            } ${
+              toggleList
+                ? "hover:bg-[var(--color-secondary)]"
+                : "hover:bg-gray-100"
+            }`}
+            onClick={() => setToggleList(!toggleList)}
+          >
             <ThumbsDown color="#FF0808" />
           </div>
         </div>
