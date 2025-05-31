@@ -67,3 +67,24 @@ export const updateList = async (
   });
   return info;
 };
+
+export const deleteList = async (id: number, user_id: number) => {
+  const list = await db.backhandedCompliment.delete({
+    where: {
+      id: id,
+      user_id: user_id,
+    },
+  });
+
+  return list;
+};
+
+export const getList = async (user_id: number) => {
+  const lists = await db.backhandedCompliment.findMany({
+    where: {
+      user_id: user_id,
+    },
+  });
+
+  return lists;
+};

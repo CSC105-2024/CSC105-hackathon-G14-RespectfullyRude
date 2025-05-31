@@ -51,7 +51,7 @@ export const backhandedOutput = async (
 
     const res = response?.candidates?.[0]?.content?.parts?.[0]?.text;
     console.log("res:", res);
-    console.log("parsed: ", JSON.parse(res));
+    //console.log("parsed: ", JSON.parse(res));
 
     if (!res) {
       throw new Error("No text in model response");
