@@ -33,7 +33,8 @@ model BackhandedCompliment{
   img_id String
   backhanded_name String
   backhanded_img String
-  backhanded_text String
+  backhanded_text String @db.Text
+  flagged Boolean @default(false)
   user User @relation(fields: [user_id], references: [id])
   user_id Int 
 }
