@@ -85,25 +85,13 @@ const HomePage = () => {
             <strong>+</strong> Add
           </Button>
           <div
-            className={`flex items-center justify-center w-10 pt-1 rounded-full cursor-pointer border border-[var(--color-accent)] ${
-              toggleList ? "bg-[var(--color-primary)]" : "bg-white"
-            } ${
-              toggleList
-                ? "hover:bg-[var(--color-secondary)]"
-                : "hover:bg-gray-100"
-            }`}
+            className="flex items-center justify-center w-10 pt-1 rounded-full cursor-pointer border border-[var(--color-accent)] hover:bg-gray-100 bg-[var(--color-primary)]"
             onClick={() => setToggleList(!toggleList)}
           >
             <ThumbsDown color="#FF0808" />
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-15 gap-y-10 mb-15 px-5">
-        {selectedProfiles.map((profile, index) => {
-          return <Profiles key={profile.id} profile={profile} index={index} />;
-        })}
-=======
       <div className="grid grid-cols-5 gap-x-15 gap-y-10 mb-15">
         {data?.length > 0 ? (
           selectedProfiles?.map((profile, index) => {
@@ -116,7 +104,6 @@ const HomePage = () => {
             No Ugh Lists found
           </div>
         )}
->>>>>>> 0b4713e6130b26c44355f6308cdbf639b486312f
       </div>
       <Footer />
     </div>

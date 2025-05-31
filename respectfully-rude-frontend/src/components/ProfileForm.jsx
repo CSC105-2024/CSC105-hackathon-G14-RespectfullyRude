@@ -4,19 +4,10 @@ import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import UploadImage from "./UploadImage";
 import { useNavigate } from "react-router";
-<<<<<<< HEAD
-import AlertBox from "./AlertBox";
-
-const ProfileForm = ({ mode }) => {
-  const handleSubmit = () => {
-    navigate("/dashboard/home");
-  };
-=======
 import { toast } from "sonner";
 import { useCreate } from "@/hooks/useCreateList";
 
 const ProfileForm = ({ oldForm, mode }) => {
->>>>>>> 0b4713e6130b26c44355f6308cdbf639b486312f
   const navigate = useNavigate();
   const { create } = useCreate();
 
@@ -92,20 +83,6 @@ const ProfileForm = ({ oldForm, mode }) => {
         >
           Cancel
         </Button>
-<<<<<<< HEAD
-        <AlertBox
-          buttonName={mode === "create" ? "Create" : "Edit"}
-          title={
-            mode === "create"
-              ? "Are you sure you want to create a new profile?"
-              : "Are you sure you want to update this profile?"
-          }
-          css={
-            "bg-[var(--color-primary)] hover:bg-[var(--color-secondary)] text-base w-1/3 cursor-pointer mt-2 px-15 "
-          }
-          onClick={handleSubmit}
-        />
-=======
         <Button
           className="text-base bg-[var(--color-primary)] cursor-pointer hover:bg-[var(--color-secondary)] mt-2 px-15"
           variant="default"
@@ -113,7 +90,6 @@ const ProfileForm = ({ oldForm, mode }) => {
         >
           {mode === "create" ? "Create" : "Edit"}
         </Button>
->>>>>>> 0b4713e6130b26c44355f6308cdbf639b486312f
       </div>
     </div>
   );
