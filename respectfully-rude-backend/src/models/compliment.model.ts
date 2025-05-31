@@ -88,3 +88,26 @@ export const getList = async (user_id: number) => {
 
   return lists;
 };
+
+export const toggleList = async (id: number, user_id: number) => {
+  const list = await db.backhandedCompliment.findUnique({
+    where: {
+      id: id,
+      user_id: user_id,
+    },
+  });
+
+  const toggledList = await db.backhandedCompliment.update({
+    where: {
+      id: id,
+      user_id: user_id,
+    },
+    data: {
+      flagged: {
+        set: !list?.flagged,
+      },
+    },
+  });
+
+  return toggledList;
+};
