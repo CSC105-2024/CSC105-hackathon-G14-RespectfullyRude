@@ -13,9 +13,11 @@ const ProfileForm = ({ oldForm, mode }) => {
   const { create } = useCreate();
   const { edit } = useEditList();
 
+  console.log(oldForm.img_url);
+
   const [form, setForm] = useState({
     name: oldForm?.name || "",
-    img: "",
+    img: oldForm.img_url || "",
     text: oldForm?.text || "",
   });
 
@@ -63,7 +65,12 @@ const ProfileForm = ({ oldForm, mode }) => {
               value={form.name}
             />
             <div>
-              <UploadImage length={1} mode={mode} setForm={setForm} />
+              <UploadImage
+                length={1}
+                mode={mode}
+                setForm={setForm}
+                oldForm={oldForm}
+              />
             </div>
           </div>
         </div>

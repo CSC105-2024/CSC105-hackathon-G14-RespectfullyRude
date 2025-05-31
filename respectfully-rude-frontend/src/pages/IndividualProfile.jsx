@@ -3,14 +3,6 @@ import { useDataContext } from "@/hooks/useDataContext";
 import React from "react";
 import { useNavigate, useParams } from "react-router";
 
-const profile = {
-  backhanded_img:
-    "https://img.freepik.com/free-photo/closeup-young-female-professional-making-eye-contact-against-colored-background_662251-651.jpg",
-  backhanded_name: "Jane Doe",
-  backhanded_text:
-    "A master of subtle wit, Jane is known for delivering backhanded compliments that leave you questioning whether you’ve just been praised or politely roasted. With a charming smile and a knack for sarcasm, she navigates social settings with effortless grace and a touch of mischief. She once complimented a colleague's 'bold fashion choice' that was just brave enough to make headlines at the office for a week.",
-};
-
 const IndividualProfile = () => {
   const navigate = useNavigate();
   const { id } = useParams();
