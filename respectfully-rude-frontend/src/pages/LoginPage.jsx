@@ -8,9 +8,11 @@ import { Button } from "../components/ui/button";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useLogin } from "@/hooks/useLogin";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { login } = useLogin();
 
   const loginSchema = z.object({
     email: z.string().email(),
@@ -30,7 +32,7 @@ const LoginPage = () => {
   });
 
   const onSubmit = async (data) => {
-    // await login(data.email, data.password);
+    await login(data.email, data.password);
     console.log(data);
   };
 
