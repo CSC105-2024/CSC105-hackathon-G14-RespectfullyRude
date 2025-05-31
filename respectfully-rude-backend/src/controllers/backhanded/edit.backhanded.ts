@@ -7,7 +7,7 @@ const editList = async (c: Context) => {
   const formData = await c.req.formData();
   const listId = Number(c.req.param("id"));
 
-  const id = c.get("user_id");
+  const user_id = c.get("user_id");
   const name = formData.get("name");
   const text = formData.get("text");
   const imgFile = formData.get("img");
@@ -21,8 +21,7 @@ const editList = async (c: Context) => {
   }
 
   try {
-    const img_id = await listModel.findImgId(listId, id);
-    console.log(img_id);
+    const img_id = await listModel.findImgId(listId, user_id);
 
     if (img_id) {
       await cloudinary.uploader.destroy(img_id);
@@ -42,7 +41,7 @@ const editList = async (c: Context) => {
 
     const imgUrl = await imgOutputUrl(genOutput?.prompt, img);
 
-    const list = await listModel.updateList(
+    const editedList = await listModel.updateList(
       listId,
       name,
       result.secure_url,
@@ -51,13 +50,13 @@ const editList = async (c: Context) => {
       genOutput.name,
       genOutput.text,
       imgUrl,
-      id
+      user_id
     );
 
     return c.json(
       {
         success: true,
-        data: list,
+        data: editedList,
         msg: `successful`,
       },
       200
