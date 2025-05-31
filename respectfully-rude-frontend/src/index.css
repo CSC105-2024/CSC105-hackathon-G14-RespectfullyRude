@@ -1,20 +1,20 @@
-@import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --color-primary: #FEA233;
+  --color-primary: #fea233;
   --color-secondary: #fe8833;
-  --color-foreground: #59738C;
-  --color-alert: #EC221F;
+  --color-foreground: #59738c;
+  --color-alert: #ec221f;
   --color-alert-hover: #cf1e1b;
-  --color-accent: #FF0808;
-  --color-input-bg: #F7FAFC;
-  --color-pale: #E8EDF2;
+  --color-accent: #ff0808;
+  --color-input-bg: #f7fafc;
+  --color-pale: #e8edf2;
   --color-pale-hover: #d8dbde;
 
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
 
   --radius: 0.625rem;
 
@@ -161,4 +161,3 @@
     @apply bg-background text-foreground;
   }
 }
-
