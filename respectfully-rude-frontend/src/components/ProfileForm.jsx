@@ -43,11 +43,11 @@ const ProfileForm = ({ oldForm, mode }) => {
   };
 
   return (
-    <div className="p-5 pl-10 min-w-screen ">
+    <div className="p-5">
       <h1 className="text-3xl font-bold">
         {mode === "create" ? "Create Ugh List" : "Edit Ugh List"}
       </h1>
-      <div className="flex flex-row gap-10 items-center px-40">
+      <div className="flex flex-col md:flex-row  gap-10 items-around px-5 md:px-40 w-full">
         <div className=" gap-10">
           <div className="flex flex-col gap-1 justify-center mt-10">
             <h2 className="font-semibold">Name</h2>
@@ -70,28 +70,30 @@ const ProfileForm = ({ oldForm, mode }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-full gap-1 ">
-          <h2 className="items-start font-semibold">Description</h2>
+        <div className="flex flex-col items-center w-full gap-1 ">
+          <h2 className="items-start self-start font-semibold text-left">
+            Description
+          </h2>
           <Textarea
             placeholder="I hate him so much"
             className={
-              "bg-[var(--color-input-bg)] text-[var(--color-foreground)]  w-full h-90 p-7"
+              "bg-[var(--color-input-bg)] text-[var(--color-foreground)] w-full h-90 p-7"
             }
             onChange={(e) => setForm((f) => ({ ...f, text: e.target.value }))}
             value={form.text}
           />
         </div>
       </div>
-      <div className="flex justify-center gap-10 mt-10">
+      <div className="flex justify-center gap-2 md:gap-10 mt-10">
         <Button
-          className="text-black bg-[var(--color-pale)] cursor-pointer hover:bg-[var(--color-pale-hover)] mt-2 px-15"
+          className="text-black bg-[var(--color-pale)] cursor-pointer hover:bg-[var(--color-pale-hover)] mt-2 px-7 md:px-15"
           variant="default"
           onClick={() => navigate("/dashboard/home")}
         >
           Cancel
         </Button>
         <Button
-          className="text-base bg-[var(--color-primary)] cursor-pointer hover:bg-[var(--color-secondary)] mt-2 px-15"
+          className="text-base bg-[var(--color-primary)] cursor-pointer hover:bg-[var(--color-secondary)] mt-2 px-7  md:px-15"
           variant="default"
           onClick={handleSubmit}
         >

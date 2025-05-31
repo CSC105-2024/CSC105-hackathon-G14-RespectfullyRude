@@ -19,8 +19,8 @@ const IndividualProfile = () => {
   };
 
   return (
-    <div className="flex flex-col min-w-screen  items-center justify-around px-10 py-5">
-      <div className="flex flex-col items-center gap-3">
+    <div className="flex flex-col w-full min-h-screen items-center justify-center gap-10 px-10">
+      <div className="flex flex-col items-center gap-3 mb-5">
         <div className="w-40 h-full">
           <img
             src={profile.backhanded_img}
@@ -31,14 +31,16 @@ const IndividualProfile = () => {
         <h1 className="text-xl font-bold">{profile.backhanded_name}</h1>
       </div>
 
-      <div className="w-8/10">
+      <div className="w-8/10 flex flex-col gap-3">
         <h1 className="text-xl font-bold text-left self-start gap-3">
           BackHand Compliment
         </h1>
-        <div>{profile.backhanded_text}</div>
+        <div className="bg-[var(--color-pale)] p-7 rounded-lg">
+          {profile.backhanded_text}
+        </div>
       </div>
 
-      <div className="flex justify-center gap-10">
+      <div className="flex justify-center gap-2">
         <Button
           className="text-base bg-[var(--color-primary)] w-1/3 cursor-pointer hover:bg-[var(--color-secondary)] mt-2 px-15"
           variant="default"
