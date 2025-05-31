@@ -1,8 +1,8 @@
 import { db } from "../index.js";
-import type { createUser } from "../types/user.type.ts";
+import type { User } from "../types/user.type.ts";
 import { generateHash } from "../utils/hash.ts";
 
-export const register = async ({ name, email, password }: createUser) => {
+export const register = async ({ name, email, password }: User) => {
   const hashed = await generateHash(password);
 
   await db.user.create({
@@ -14,10 +14,36 @@ export const register = async ({ name, email, password }: createUser) => {
   });
 };
 
-export const findInfo = async (email: string) => {
+export const findInfo = async (input: string | number) => {
   const user = await db.user.findUnique({
-    where: { email: email },
+    where: typeof input === "string" ? { email: input } : { id: input },
   });
 
   return user;
+};
+
+export const updateInfo = async (name: string, email: string, id: number) => {
+  const user = await db.user.update({
+    where: { id: id },
+    data: {
+      name: name,
+      email: email,
+    },
+    select: {
+      email: true,
+      name: true,
+    },
+  });
+
+  return user;
+};
+
+export const updatePassword = async (password: string, id: number) => {
+  const hash = await generateHash(password);
+  await db.user.update({
+    where: { id: id },
+    data: {
+      password: hash,
+    },
+  });
 };
