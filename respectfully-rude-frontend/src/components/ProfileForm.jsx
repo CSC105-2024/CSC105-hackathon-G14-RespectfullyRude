@@ -19,8 +19,6 @@ const ProfileForm = ({ oldForm, mode }) => {
     text: oldForm?.text || "",
   });
 
-  console.log(form);
-
   const handleSubmit = () => {
     console.log(form);
 
