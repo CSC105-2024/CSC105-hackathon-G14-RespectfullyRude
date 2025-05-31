@@ -1,26 +1,58 @@
 import AlertBox from "@/components/AlertBox";
 import { Button } from "@/components/ui/button";
-import { ThumbsDown } from "lucide-react";
+import { AwardIcon, ThumbsDown } from "lucide-react";
 import React, { useState } from "react";
 import { useDataContext } from "@/hooks/useDataContext";
 import { useNavigate, useParams } from "react-router";
+import { useDelete } from "@/hooks/useDeleteList";
+import { toast } from "sonner";
+import { useToggleList } from "@/hooks/useToggle";
 
 const IndividualProfile = () => {
-  const [toggleList, setToggleList] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
   const { data } = useDataContext();
 
   const profile = data.find((d) => d.id === Number(id));
+
   console.log(profile);
 
+  const { deleteList } = useDelete();
+  const { toggleList } = useToggleList();
+
+  const toggle = async () => {
+    await toggleList(id);
+  };
+
   const confirmDelete = () => {
-    navigate("/dashboard/home");
+    const promise = async () => {
+      await deleteList(id);
+    };
+
+    toast.promise(promise(), {
+      //promise is not a func
+      loading: "Deleting...",
+      success: (data) => {
+        return `Your course has been deleted`;
+      },
+      error: "Error",
+    });
   };
 
   return (
-    <div className="flex flex-col w-full min-h-screen items-center justify-center gap-10 px-10">
-      <div className="flex flex-col items-center gap-3 mb-5">
+    <div className="flex flex-col w-full items-center gap-10 px-10">
+      <div className="flex justify-end  w-full mt-2">
+        <div
+          className={`flex items-center justify-center w-10 pt-1 rounded-full cursor-pointer border border-[var(--color-accent)] hover:bg-gray-100 ${
+            profile.flagged ? "bg-[var(--color-primary)]" : "bg-white"
+          } mt-10`}
+          onClick={toggle}
+        >
+          <ThumbsDown color="#FF0808" />
+        </div>
+      </div>
+
+      <div className="flex flex-col items-center gap-3">
         <div className="w-40 h-full">
           <img
             src={profile.backhanded_img}
@@ -40,7 +72,7 @@ const IndividualProfile = () => {
         </div>
       </div>
 
-      <div className="flex justify-center gap-2">
+      <div className="flex justify-center gap-2 mb-10">
         <Button
           className="text-base bg-[var(--color-primary)] w-1/3 cursor-pointer hover:bg-[var(--color-secondary)] mt-2 px-15"
           variant="default"

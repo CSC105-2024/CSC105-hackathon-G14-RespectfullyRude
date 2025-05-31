@@ -22,6 +22,21 @@ const HomePage = () => {
     setSelectedProfiles(filtered);
   };
 
+  const onToggle = () => {
+    setToggleList((t) => {
+      const next = !t;
+
+      if (next) {
+        const filtered = data.filter((profile) => profile.flagged === true);
+        setSelectedProfiles(filtered);
+      } else {
+        setSelectedProfiles(data);
+      }
+
+      return next;
+    });
+  };
+
   console.log(selectedProfiles);
 
   const navigate = useNavigate();
