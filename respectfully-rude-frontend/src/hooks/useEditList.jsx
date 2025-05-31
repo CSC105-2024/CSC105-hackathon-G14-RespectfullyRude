@@ -1,27 +1,27 @@
-import axiosInstance from "../../axiosInstance";
 import React, { useState } from "react";
 import { useDataContext } from "./useDataContext";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "@/axiosInstance";
 
-export const useEditCourse = () => {
+export const useEditList = () => {
   const [editError, setEditError] = useState(null);
   const { setData } = useDataContext();
   const navigate = useNavigate();
 
-  const editCourse = async (newCourse, oldCourse) => {
-    const updatedFormData = new FormData();
-
-    if (
-      newCourse.name === oldCourse.name &&
-      newCourse.text === oldCourse.text
-    ) {
+  const edit = async (newList, oldList) => {
+    if (newList.name === oldList.name && newList.text === oldList.text) {
       throw new Error("No changed detected");
     }
 
+    const formData = new FormData();
+    formData.append("name", newList.name);
+    formData.append("text", newList.text);
+    formData.append("img", newList.img.file);
+
     try {
       const { data } = await axiosInstance.put(
-        `course/edit/${oldCourse.id}`,
-        updatedFormData,
+        `backhanded/edit/${oldList.id}`,
+        formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -49,5 +49,5 @@ export const useEditCourse = () => {
       throw new Error(e);
     }
   };
-  return { editCourse, editError, setEditError };
+  return { edit };
 };
