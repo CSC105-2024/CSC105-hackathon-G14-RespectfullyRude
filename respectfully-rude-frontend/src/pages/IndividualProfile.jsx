@@ -1,15 +1,22 @@
+import AlertBox from "@/components/AlertBox";
 import { Button } from "@/components/ui/button";
+import { ThumbsDown } from "lucide-react";
+import React, { useState } from "react";
 import { useDataContext } from "@/hooks/useDataContext";
-import React from "react";
 import { useNavigate, useParams } from "react-router";
 
 const IndividualProfile = () => {
+  const [toggleList, setToggleList] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
   const { data } = useDataContext();
 
   const profile = data.find((d) => d.id === Number(id));
   console.log(profile);
+
+  const confirmDelete = () => {
+    navigate("/dashboard/home");
+  };
 
   return (
     <div className="flex flex-col min-w-screen min-h-screen items-center justify-around px-10 py-5">
@@ -40,12 +47,14 @@ const IndividualProfile = () => {
           Edit
         </Button>{" "}
         {/*change later*/}
-        <Button
-          className="text-base bg-[var(--color-alert)] w-1/3 cursor-pointer hover:bg-[var(--color-alert-hover)] mt-2 px-15"
-          variant="default"
-        >
-          Delete
-        </Button>
+        <AlertBox
+          buttonName={"Delete"}
+          css={
+            "bg-[var(--color-alert)] hover:bg-[var(--color-alert-hover)] text-base w-1/3 cursor-pointer mt-2 px-15 "
+          }
+          title={"Are you sure you want to delete this profile?"}
+          onClick={confirmDelete}
+        />
       </div>
     </div>
   );

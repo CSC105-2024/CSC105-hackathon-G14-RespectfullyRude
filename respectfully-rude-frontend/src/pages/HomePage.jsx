@@ -25,8 +25,8 @@ const HomePage = () => {
 
   const navigate = useNavigate();
   return (
-    <div className="min-w-screen min-h-screen flex flex-col items-center justify-around">
-      <div className="flex mb-15 justify-around w-screen">
+    <div className="min-w-screen min-h-screen flex flex-col items-center justify-around py-5">
+      <div className="hidden md:flex mb-15 justify-around w-screen">
         <div className="flex items-center border border-[var(--color-foreground)] px-3 w-100 rounded-md hover:border-black h-9">
           <Input
             type="text"
@@ -45,7 +45,10 @@ const HomePage = () => {
           >
             <strong>+</strong> Add
           </Button>
-          <div className="flex border-[var(--color-accent)] border-1 items-center bg-[var(--color-primary)] rounded-full cursor-pointer hover:bg-[var(--color-secondary)] justify-center w-10 pt-1">
+          <div
+            className="flex items-center justify-center w-10 pt-1 rounded-full cursor-pointer border border-[var(--color-accent)] hover:bg-gray-100 bg-[var(--color-primary)]"
+            onClick={() => setToggleList(!toggleList)}
+          >
             <ThumbsDown color="#FF0808" />
           </div>
         </div>
