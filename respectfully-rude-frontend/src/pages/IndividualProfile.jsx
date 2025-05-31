@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useDataContext } from "@/hooks/useDataContext";
 import React from "react";
 import { useNavigate, useParams } from "react-router";
 
@@ -13,6 +14,10 @@ const profile = {
 const IndividualProfile = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { data } = useDataContext();
+
+  const profile = data.find((d) => d.id === Number(id));
+  console.log(profile);
 
   return (
     <div className="flex flex-col min-w-screen min-h-screen items-center justify-around px-10 py-5">
@@ -20,7 +25,7 @@ const IndividualProfile = () => {
         <div className="w-40 h-full">
           <img
             src={profile.backhanded_img}
-            className="w-full rounded-full aspect-square object-cover"
+            className="w-full rounded-full aspect-square object-cover border border-[var(--color-primary)]"
           />
         </div>
 

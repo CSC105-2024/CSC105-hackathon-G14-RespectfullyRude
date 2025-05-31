@@ -17,12 +17,12 @@ const Profiles = ({ profile, index }) => {
       onClick={() => redirect(profile.id)}
     >
       <img
-        src={profile.img_url}
+        src={profile?.img_url}
         className="w-full rounded-lg aspect-square object-cover"
       />
-      <div className="font-medium">{profile.name}</div>
+      <div className="font-medium">{profile?.name}</div>
       <div className="text-sm text-[var(--color-foreground)]">
-        {profile.text}
+        {profile?.text}
       </div>
     </div>
   );

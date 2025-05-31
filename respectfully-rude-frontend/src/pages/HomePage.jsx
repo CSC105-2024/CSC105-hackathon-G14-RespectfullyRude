@@ -93,7 +93,7 @@ const HomePage = () => {
         {data?.length > 0 ? (
           selectedProfiles?.map((profile, index) => {
             return (
-              <Profiles key={profile.id} profile={profile} index={index} />
+              <Profiles key={profile?.id} profile={profile} index={index} />
             );
           })
         ) : (
