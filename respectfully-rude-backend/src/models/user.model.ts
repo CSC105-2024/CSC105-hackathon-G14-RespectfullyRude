@@ -47,3 +47,33 @@ export const updatePassword = async (password: string, id: number) => {
     },
   });
 };
+
+export const findImgId = async (id: number) => {
+  const info = await db.user.findUnique({
+    where: { id },
+    select: {
+      img_id: true,
+    },
+  });
+
+  return info?.img_id;
+};
+
+export const uploadProfileAndID = async (
+  id: number,
+  img_url: string,
+  img_id: string
+) => {
+  const info = await db.user.update({
+    where: { id },
+    data: {
+      img_url: img_url,
+      img_id: img_id,
+    },
+    select: {
+      img_url: true,
+      img_id: true,
+    },
+  });
+  return info;
+};
