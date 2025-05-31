@@ -8,14 +8,13 @@ import { toast } from "sonner";
 import { useCreate } from "@/hooks/useCreateList";
 
 const ProfileForm = ({ oldForm, mode }) => {
-  console.log(oldForm.name);
   const navigate = useNavigate();
   const { create } = useCreate();
 
   const [form, setForm] = useState({
-    name: oldForm.name || "",
+    name: oldForm?.name || "",
     img: "",
-    text: oldForm.text || "",
+    text: oldForm?.text || "",
   });
 
   const handleSubmit = () => {

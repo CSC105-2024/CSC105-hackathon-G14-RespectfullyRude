@@ -1,45 +1,53 @@
+import axiosInstance from "../../axiosInstance";
 import React, { useState } from "react";
 import { useDataContext } from "./useDataContext";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "@/axiosInstance";
 
-export const useCreate = () => {
+export const useEditCourse = () => {
+  const [editError, setEditError] = useState(null);
   const { setData } = useDataContext();
   const navigate = useNavigate();
 
-  const create = async (course) => {
-    //obj.val changes obj into arr
-    const empty = Object.values(course).some((f) => f === "");
+  const editCourse = async (newCourse, oldCourse) => {
+    const updatedFormData = new FormData();
 
-    if (empty) {
-      throw new Error("Form Required!");
+    if (
+      newCourse.name === oldCourse.name &&
+      newCourse.text === oldCourse.text
+    ) {
+      throw new Error("No changed detected");
     }
 
-    //to be continued
-    const formData = new FormData();
-
-    formData.append("name", course.name);
-    formData.append("text", course.text);
-    formData.append("img", course.img.file);
-
-    console.log(course.img.file);
-
     try {
-      const { data } = await axiosInstance.post("backhanded/create", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      const { data } = await axiosInstance.put(
+        `course/edit/${oldCourse.id}`,
+        updatedFormData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      setTimeout(() => {
+        navigate("/dashboard/home");
+      }, 2000);
+
+      setData((prevData) => {
+        const index = prevData.findIndex((list) => list.id === data.data.id);
+        if (index === -1) return [...prevData, data.data];
+
+        const updated = [...prevData];
+        updated[index] = data.data;
+        return updated;
       });
-      if (data)
-        setTimeout(() => {
-          navigate("/dashboard/home");
-        }, 2000);
-      setData((d) => [...d, data.data]);
+
       return data;
     } catch (e) {
       console.log(e);
+      setEditError(e?.response?.data?.error);
       throw new Error(e);
     }
   };
-  return { create };
+  return { editCourse, editError, setEditError };
 };
