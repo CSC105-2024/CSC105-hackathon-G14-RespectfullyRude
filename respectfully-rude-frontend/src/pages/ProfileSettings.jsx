@@ -1,8 +1,10 @@
 import React from "react";
 
 const ProfileSettings = () => {
+  //const ProfilePicture = ({ imageUrl, onImageUpload })
   
   return (
+    
     <div>
       <div className="ml-5 text-left text-3xl text-bold  mt-5">Profile Settings</div>
     

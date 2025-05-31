@@ -110,7 +110,7 @@ const Navbar = () => {
           />
           <Avatar
             onClick={() => {
-              navigate("/dashboard/home");
+              navigate("/dashboard/settings");
             }}
             className={`h-auto w-13`}
           >
