@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import img9 from "../../assets/img9.png";
 import AlertBox from "../AlertBox";
+import { useLogout } from "@/hooks/useLogout";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -13,8 +14,10 @@ const Navbar = () => {
       : "text-[var(--color-primary)] hover:bg-neutral-100";
   };
 
-  const handleLogout = () => {
-    navigate("/");
+  const { logout } = useLogout();
+
+  const handleLogout = async () => {
+    await logout();
   };
 
   return (
