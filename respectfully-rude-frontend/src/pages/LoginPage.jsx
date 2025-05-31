@@ -5,21 +5,56 @@ import { Lock, Mail } from "lucide-react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import loginPhoto from "../assets/img11.png";
 import { Button } from "../components/ui/button";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { useLogin } from "@/hooks/useLogin";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { login } = useLogin();
+
+  const loginSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(6, "Password must be at least 6 characters long"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const onSubmit = async (data) => {
+    await login(data.email, data.password);
+    console.log(data);
+  };
+
   return (
     <div className="flex flex-col-reverse md:flex-row min-w-screen min-h-screen justify-center items-center gap-10 px-10">
       <div className="left">
         <h2 className="font-bold text-center text-2xl">Welcome back</h2>
         <div className="flex flex-col items-center">
-          <form className="flex flex-col items-center">
+          <form
+            className="flex flex-col items-center"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <FormInput
               label={"Email"}
               icon={<Mail size={18} />}
               type={"text"}
               placeholder={"Enter your email"}
+              {...register("email")}
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email.message}</p>
+            )}
             <FormInput
               label={"Password"}
               icon={<Lock size={18} />}
@@ -29,10 +64,16 @@ const LoginPage = () => {
               onToggle={() => {
                 setShowPassword(!showPassword);
               }}
+              {...register("password")}
             />
+
+            {errors.password && (
+              <p className="text-red-500 text-sm ">{errors.password.message}</p>
+            )}
             <Button
               className="text-base bg-[var(--color-primary)] w-1/3 cursor-pointer hover:bg-[var(--color-secondary)] mt-2"
               variant="default"
+              type="submit"
             >
               Sign in
             </Button>

@@ -2,6 +2,8 @@ import AlertBox from "@/components/AlertBox";
 import { Button } from "@/components/ui/button";
 import { ThumbsDown } from "lucide-react";
 import React, { useState } from "react";
+import { useDataContext } from "@/hooks/useDataContext";
+import React from "react";
 import { useNavigate, useParams } from "react-router";
 
 const profile = {
@@ -16,6 +18,10 @@ const IndividualProfile = () => {
   const [toggleList, setToggleList] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
+  const { data } = useDataContext();
+
+  const profile = data.find((d) => d.id === Number(id));
+  console.log(profile);
 
   const confirmDelete = () => {
     navigate("/dashboard/home");
@@ -24,6 +30,7 @@ const IndividualProfile = () => {
   return (
     <div className="flex flex-col min-w-screen min-h-screen items-center justify-around px-10 py-5">
       <div className="flex flex-col items-center gap-3">
+<<<<<<< HEAD
         <div className="flex">
           <div className="w-40 h-full">
             <img
@@ -43,6 +50,13 @@ const IndividualProfile = () => {
           >
             <ThumbsDown color="#FF0808" />
           </div>
+=======
+        <div className="w-40 h-full">
+          <img
+            src={profile.backhanded_img}
+            className="w-full rounded-full aspect-square object-cover border border-[var(--color-primary)]"
+          />
+>>>>>>> 0b4713e6130b26c44355f6308cdbf639b486312f
         </div>
 
         <h1 className="text-xl font-bold">{profile.backhanded_name}</h1>
