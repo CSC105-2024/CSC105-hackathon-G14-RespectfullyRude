@@ -13,11 +13,9 @@ const ProfileForm = ({ oldForm, mode }) => {
   const { create } = useCreate();
   const { edit } = useEditList();
 
-  console.log(oldForm.img_url);
-
   const [form, setForm] = useState({
     name: oldForm?.name || "",
-    img: oldForm.img_url || "",
+    img: "",
     text: oldForm?.text || "",
   });
 

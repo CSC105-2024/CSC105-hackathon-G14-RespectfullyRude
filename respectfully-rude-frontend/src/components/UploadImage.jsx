@@ -10,9 +10,9 @@ const UploadImage = ({ setForm, mode, oldForm }) => {
   console.log(file);
 
   useEffect(() => {
-    if (oldForm.img_url) {
+    if (oldForm?.img_url) {
       setFile(() => ({
-        url: oldForm.img_url,
+        url: oldForm?.img_url,
       }));
     }
   }, [oldForm]);
