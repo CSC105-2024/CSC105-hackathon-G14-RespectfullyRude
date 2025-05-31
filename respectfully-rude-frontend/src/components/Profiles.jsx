@@ -8,6 +8,8 @@ const Profiles = ({ profile, index }) => {
     navigate(`/dashboard/profile/${id}`);
   };
 
+  console.log(profile);
+
   return (
     <div
       className="w-40 h-full cursor-pointer hover:shadow-md hover:scale-102 duration-150 p-1"
@@ -15,12 +17,12 @@ const Profiles = ({ profile, index }) => {
       onClick={() => redirect(profile.id)}
     >
       <img
-        src={profile.img}
+        src={profile.img_url}
         className="w-full rounded-lg aspect-square object-cover"
       />
       <div className="font-medium">{profile.name}</div>
       <div className="text-sm text-[var(--color-foreground)]">
-        {profile.description}
+        {profile.text}
       </div>
     </div>
   );
