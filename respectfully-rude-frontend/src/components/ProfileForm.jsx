@@ -4,8 +4,12 @@ import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import UploadImage from "./UploadImage";
 import { useNavigate } from "react-router";
+import AlertBox from "./AlertBox";
 
 const ProfileForm = ({ mode }) => {
+  const handleSubmit = () => {
+    navigate("/dashboard/home");
+  };
   const navigate = useNavigate();
 
   return (
@@ -16,7 +20,7 @@ const ProfileForm = ({ mode }) => {
       <div className="flex flex-col gap-10 items-center px-40">
         <div className="flex gap-10">
           <div>
-            <UploadImage length={1} mode={mode} />
+            <UploadImage length={1} mode={mode} /> {/*change later */}
           </div>
           <div className="flex flex-col gap-1 justify-center">
             <h2 className="font-semibold">Name</h2>
@@ -47,12 +51,18 @@ const ProfileForm = ({ mode }) => {
         >
           Cancel
         </Button>
-        <Button
-          className="text-base bg-[var(--color-primary)] cursor-pointer hover:bg-[var(--color-secondary)] mt-2 px-15"
-          variant="default"
-        >
-          {mode === "create" ? "Create" : "Edit"}
-        </Button>
+        <AlertBox
+          buttonName={mode === "create" ? "Create" : "Edit"}
+          title={
+            mode === "create"
+              ? "Are you sure you want to create a new profile?"
+              : "Are you sure you want to update this profile?"
+          }
+          css={
+            "bg-[var(--color-primary)] hover:bg-[var(--color-secondary)] text-base w-1/3 cursor-pointer mt-2 px-15 "
+          }
+          onClick={handleSubmit}
+        />
       </div>
     </div>
   );

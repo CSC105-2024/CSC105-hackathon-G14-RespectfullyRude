@@ -1,14 +1,20 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import img9 from "../../assets/img9.png";
+import AlertBox from "../AlertBox";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const isActive = (path) => {
     return location.pathname.startsWith(path)
       ? "bg-[var(--color-primary)] text-white"
       : "text-[var(--color-primary)] hover:bg-neutral-100";
+  };
+
+  const handleLogout = () => {
+    navigate("/");
   };
 
   return (
@@ -37,13 +43,14 @@ const Navbar = () => {
         >
           Generate
         </Link>
-        <Link
-          to="/dashboard/home"
-          className={`px-3 py-2 rounded-md text-sm font-medium text-[var(--color-primary)] hover:bg-neutral-100
-          )}`}
-        >
-          Logout
-        </Link>
+        <AlertBox
+          buttonName={"Logout"}
+          css={
+            "px-3 py-2 rounded-md text-sm font-medium bg-white text-[var(--color-primary)] hover:bg-neutral-100"
+          }
+          title={"Are you sure you want to logout?"}
+          onClick={handleLogout}
+        />
         <Avatar
           onClick={() => {
             navigate("/dashboard/home");

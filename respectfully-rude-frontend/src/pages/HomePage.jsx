@@ -64,7 +64,7 @@ const HomePage = ({ profiles }) => {
 
   const navigate = useNavigate();
   return (
-    <div className="min-w-screen min-h-screen flex flex-col items-center justify-around">
+    <div className="min-w-screen min-h-screen flex flex-col items-center justify-around py-5">
       <div className="flex mb-15 justify-around w-screen">
         <div className="flex items-center border border-[var(--color-foreground)] px-3 w-100 rounded-md hover:border-black h-9">
           <Input
