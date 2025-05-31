@@ -26,5 +26,5 @@ export const useLogin = () => {
     }
   };
 
-  return { loginError, setLoginError, login };
+  return { login };
 };
