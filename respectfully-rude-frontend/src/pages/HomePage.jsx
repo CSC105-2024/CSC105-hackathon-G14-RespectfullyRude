@@ -42,7 +42,7 @@ const HomePage = () => {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center justify-around py-5">
-      <div className="hidden md:flex mb-15 justify-around w-screen">
+      <div className="flex flex-col md:flex-row items-center mb-15 gap-2 md:justify-around w-screen">
         <div className="flex items-center border border-[var(--color-foreground)] px-3 w-100 rounded-md hover:border-black h-9">
           <Input
             type="text"
