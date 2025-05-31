@@ -11,6 +11,7 @@ import { useDataContext } from "@/hooks/useDataContext";
 
 const HomePage = () => {
   const { data } = useDataContext();
+  const [toggleList, setToggleList] = useState();
   const [selectedProfiles, setSelectedProfiles] = useState(data);
   const onSearch = (e) => {
     const name = e.target.value.toLowerCase();
@@ -25,7 +26,7 @@ const HomePage = () => {
 
   const navigate = useNavigate();
   return (
-    <div className="min-w-screen min-h-screen flex flex-col items-center justify-around py-5">
+    <div className="min-w-screen  flex flex-col items-center justify-around py-5">
       <div className="hidden md:flex mb-15 justify-around w-screen">
         <div className="flex items-center border border-[var(--color-foreground)] px-3 w-100 rounded-md hover:border-black h-9">
           <Input
@@ -47,7 +48,7 @@ const HomePage = () => {
           </Button>
           <div
             className="flex items-center justify-center w-10 pt-1 rounded-full cursor-pointer border border-[var(--color-accent)] hover:bg-gray-100 bg-[var(--color-primary)]"
-            onClick={() => setToggleList(!toggleList)}
+            onClick={() => setToggleList()}
           >
             <ThumbsDown color="#FF0808" />
           </div>
@@ -66,7 +67,6 @@ const HomePage = () => {
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 };

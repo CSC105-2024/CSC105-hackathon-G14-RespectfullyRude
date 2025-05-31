@@ -43,7 +43,7 @@ const ProfileForm = ({ oldForm, mode }) => {
   };
 
   return (
-    <div className="p-5 pl-10 min-w-screen min-h-screen">
+    <div className="p-5 pl-10 min-w-screen ">
       <h1 className="text-3xl font-bold">
         {mode === "create" ? "Create Ugh List" : "Edit Ugh List"}
       </h1>

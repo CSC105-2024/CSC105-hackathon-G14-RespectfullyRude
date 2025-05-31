@@ -19,7 +19,7 @@ const IndividualProfile = () => {
   };
 
   return (
-    <div className="flex flex-col min-w-screen min-h-screen items-center justify-around px-10 py-5">
+    <div className="flex flex-col min-w-screen  items-center justify-around px-10 py-5">
       <div className="flex flex-col items-center gap-3">
         <div className="w-40 h-full">
           <img
