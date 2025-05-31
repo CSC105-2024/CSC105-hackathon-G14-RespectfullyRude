@@ -6,6 +6,7 @@ import FormInput from "../components/FormInput";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
+import Footer from "@/components/layout/Footer";
 
 const profilesData = [
   {
@@ -74,11 +75,12 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-5 gap-x-15 gap-y-10">
+      <div className="grid grid-cols-5 gap-x-15 gap-y-10 mb-15">
         {profilesData.map((profile, index) => {
           return <Profiles key={profile.id} profile={profile} index={index} />;
         })}
       </div>
+      <Footer />
     </div>
   );
 };

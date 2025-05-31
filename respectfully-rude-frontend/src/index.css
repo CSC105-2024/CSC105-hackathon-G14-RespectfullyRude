@@ -7,6 +7,8 @@
   --color-primary: #FEA233;
   --color-secondary: #fe8833;
   --color-foreground: #59738C;
+  --color-alert: #EC221F;
+  --color-alert-hover: #cf1e1b;
 
   font-family: 'Plus Jakarta Sans', sans-serif;
 
