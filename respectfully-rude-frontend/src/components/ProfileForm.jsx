@@ -55,7 +55,7 @@ const ProfileForm = ({ oldForm, mode }) => {
               type="text"
               placeholder="Enter name"
               className={
-                "bg-[var(--color-input-bg)] text-[var(--color-foreground)]  w-90 p-7"
+                "bg-[var(--color-input-bg)] text-[var(--color-foreground)]  md:w-90 p-7"
               }
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
               value={form.name}
