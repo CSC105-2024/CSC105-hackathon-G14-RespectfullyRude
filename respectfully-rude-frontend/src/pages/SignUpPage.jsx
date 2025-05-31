@@ -4,6 +4,7 @@ import { Lock, Mail, User } from "lucide-react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import FormInput from "../components/FormInput";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,7 +27,7 @@ const SignUpPage = () => {
       <div className="right">
         <h2 className="font-bold text-center text-2xl">Create Account</h2>
         <div className="flex flex-col items-center">
-          <form>
+          <form className="flex flex-col items-center">
             <FormInput
               label={"Name"}
               icon={<User size={18} />}
@@ -59,7 +60,12 @@ const SignUpPage = () => {
                 setShowPassword(!showPassword);
               }}
             />
-            <div>button placeholder</div>
+            <Button
+              className="text-base bg-[var(--color-primary)] w-1/3 cursor-pointer hover:bg-[var(--color-secondary)] mt-2"
+              variant="default"
+            >
+              Create Account
+            </Button>
           </form>
 
           <div className="mt-6 text-center">

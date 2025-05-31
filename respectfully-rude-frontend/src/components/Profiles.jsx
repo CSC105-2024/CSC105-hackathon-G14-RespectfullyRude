@@ -9,7 +9,11 @@ const Profiles = ({ profile, index }) => {
   };
 
   return (
-    <div className="w-40 h-full">
+    <div
+      className="w-40 h-full cursor-pointer"
+      id={index}
+      onClick={() => redirect(profile.id)}
+    >
       <img
         src={profile.img}
         className="w-full rounded-lg aspect-square object-cover"

@@ -4,6 +4,7 @@ import FormInput from "../components/FormInput";
 import { Lock, Mail } from "lucide-react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import loginPhoto from "../assets/img11.png";
+import { Button } from "../components/ui/button";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,7 +13,7 @@ const LoginPage = () => {
       <div className="left">
         <h2 className="font-bold text-center text-2xl">Welcome back</h2>
         <div className="flex flex-col items-center">
-          <form>
+          <form className="flex flex-col items-center">
             <FormInput
               label={"Email"}
               icon={<Mail size={18} />}
@@ -29,7 +30,12 @@ const LoginPage = () => {
                 setShowPassword(!showPassword);
               }}
             />
-            <div>button placeholder</div>
+            <Button
+              className="text-base bg-[var(--color-primary)] w-1/3 cursor-pointer hover:bg-[var(--color-secondary)] mt-2"
+              variant="default"
+            >
+              Sign in
+            </Button>
           </form>
 
           <div className="mt-6 text-center">

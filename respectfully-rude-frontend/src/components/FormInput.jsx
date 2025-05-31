@@ -1,5 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@q";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const FormInput = ({
   label,
