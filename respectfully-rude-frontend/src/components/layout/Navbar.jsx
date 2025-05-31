@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex bg-white shadow-sm py-3 px-7 text-[var(--color-primary)] items-center justify-between sticky top-0">
+      <nav className="flex bg-white shadow-sm py-3 px-7 text-[var(--color-primary)] items-center justify-between sticky top-0 z-40">
         <div className="text-lg font-semibold">
           <Link to="/dashboard/home">
             {" "}
