@@ -36,6 +36,13 @@ const Navbar = () => {
             </button>
           </div>
           <NavLink
+            to="/dashboard/settings"
+            onClick={() => setMobileOpen(false)}
+            className="my-2 mx-4"
+          >
+            Profile
+          </NavLink>
+          <NavLink
             to="/dashboard/home"
             onClick={() => setMobileOpen(false)}
             className="my-2 mx-4"
