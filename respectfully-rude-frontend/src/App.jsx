@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import MainLayout from "./components/layout/MainLayout";
 import IndividualProfile from "./pages/IndividualProfile";
+import CreatePage from "./pages/CreatePage";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/dashboard" element={<MainLayout />}>
           <Route path="home" element={<HomePage />} />
           <Route path="profile/:id" element={<IndividualProfile />} />
+          <Route path="create/:id" element={<CreatePage />} />
         </Route>
       </Routes>
     </div>
