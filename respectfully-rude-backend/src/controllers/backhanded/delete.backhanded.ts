@@ -25,11 +25,11 @@ const deleteList = async (c: Context) => {
       200
     );
   } catch (error) {
-    console.error("Error deleting course:", error);
+    console.error("Error deleting UghList:", error);
     return c.json(
       {
         success: false,
-        message: "Failed to delete course",
+        message: "Failed to delete UghList",
       },
       400
     );

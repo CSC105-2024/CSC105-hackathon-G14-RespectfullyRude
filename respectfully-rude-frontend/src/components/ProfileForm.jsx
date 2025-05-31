@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
@@ -8,24 +8,25 @@ import { toast } from "sonner";
 import { useCreate } from "@/hooks/useCreateList";
 
 const ProfileForm = ({ oldForm, mode }) => {
+  console.log(oldForm.name);
   const navigate = useNavigate();
   const { create } = useCreate();
 
   const [form, setForm] = useState({
-    name: "",
+    name: oldForm.name || "",
     img: "",
-    text: "",
+    text: oldForm.text || "",
   });
 
   const handleSubmit = () => {
     console.log(form);
 
     const promise = async () => {
-      // if (mode === "edit" && oldForm) {
-      //   await editCourse(form, oldForm);
-      // } else {
-      await create(form);
-      // }
+      if (mode === "edit" && oldForm) {
+        await editCourse(form, oldForm);
+      } else {
+        await create(form);
+      }
     };
 
     toast.promise(promise(), {
@@ -56,7 +57,7 @@ const ProfileForm = ({ oldForm, mode }) => {
                 "bg-[var(--color-input-bg)] text-[var(--color-foreground)]  w-90 p-7"
               }
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-              value={form.title}
+              value={form.name}
             />
             <div>
               <UploadImage length={1} mode={mode} setForm={setForm} />
