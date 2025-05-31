@@ -11,7 +11,7 @@ import { useDataContext } from "@/hooks/useDataContext";
 
 const HomePage = () => {
   const { data } = useDataContext();
-  const [toggleList, setToggleList] = useState();
+  const [toggleList, setToggleList] = useState(false);
   const [selectedProfiles, setSelectedProfiles] = useState(data);
   const onSearch = (e) => {
     const name = e.target.value.toLowerCase();
@@ -20,6 +20,21 @@ const HomePage = () => {
     );
 
     setSelectedProfiles(filtered);
+  };
+
+  const onToggle = () => {
+    setToggleList((t) => {
+      const next = !t;
+
+      if (next) {
+        const filtered = data.filter((profile) => profile.flagged === true);
+        setSelectedProfiles(filtered);
+      } else {
+        setSelectedProfiles(data);
+      }
+
+      return next;
+    });
   };
 
   console.log(selectedProfiles);
@@ -47,8 +62,10 @@ const HomePage = () => {
             <strong>+</strong> Add
           </Button>
           <div
-            className="flex items-center justify-center w-10 pt-1 rounded-full cursor-pointer border border-[var(--color-accent)] hover:bg-gray-100 bg-[var(--color-primary)]"
-            onClick={() => setToggleList()}
+            className={`flex items-center justify-center w-10 pt-1 rounded-full cursor-pointer border border-[var(--color-accent)] hover:bg-gray-100 ${
+              toggleList ? "bg-[var(--color-primary)]" : "bg-white"
+            }`}
+            onClick={onToggle}
           >
             <ThumbsDown color="#FF0808" />
           </div>

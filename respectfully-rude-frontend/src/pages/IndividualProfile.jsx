@@ -1,21 +1,28 @@
 import AlertBox from "@/components/AlertBox";
 import { Button } from "@/components/ui/button";
-import { ThumbsDown } from "lucide-react";
+import { AwardIcon, ThumbsDown } from "lucide-react";
 import React, { useState } from "react";
 import { useDataContext } from "@/hooks/useDataContext";
 import { useNavigate, useParams } from "react-router";
 import { useDelete } from "@/hooks/useDeleteList";
 import { toast } from "sonner";
+import { useToggleList } from "@/hooks/useToggle";
 
 const IndividualProfile = () => {
-  const [toggleList, setToggleList] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
   const { data } = useDataContext();
 
   const profile = data.find((d) => d.id === Number(id));
 
+  console.log(profile);
+
   const { deleteList } = useDelete();
+  const { toggleList } = useToggleList();
+
+  const toggle = async () => {
+    await toggleList(id);
+  };
 
   const confirmDelete = () => {
     const promise = async () => {
@@ -36,8 +43,10 @@ const IndividualProfile = () => {
     <div className="flex flex-col w-full items-center gap-10 px-10">
       <div className="flex justify-end  w-full mt-2">
         <div
-          className="flex items-center justify-center w-10 pt-1 rounded-full cursor-pointer border border-[var(--color-accent)] hover:bg-gray-100 bg-[var(--color-primary)] mt-10"
-          onClick={() => setToggleList()}
+          className={`flex items-center justify-center w-10 pt-1 rounded-full cursor-pointer border border-[var(--color-accent)] hover:bg-gray-100 ${
+            profile.flagged ? "bg-[var(--color-primary)]" : "bg-white"
+          } mt-10`}
+          onClick={toggle}
         >
           <ThumbsDown color="#FF0808" />
         </div>
