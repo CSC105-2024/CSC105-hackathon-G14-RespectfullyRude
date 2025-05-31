@@ -49,7 +49,7 @@ const ProfileForm = ({ oldForm, mode }) => {
       </h1>
       <div className="flex flex-col md:flex-row  gap-10 items-around px-5 md:px-40 w-full">
         <div className=" gap-10">
-          <div className="flex flex-col gap-1 justify-center mt-10">
+          <div className="flex flex-col gap-1 justify-center mt-10 ">
             <h2 className="font-semibold">Name</h2>
             <Input
               type="text"
