@@ -11,7 +11,7 @@ import { useDataContext } from "@/hooks/useDataContext";
 
 const HomePage = () => {
   const { data } = useDataContext();
-  const [toggleList, setToggleList] = useState();
+  const [toggleList, setToggleList] = useState(false);
   const [selectedProfiles, setSelectedProfiles] = useState(data);
   const onSearch = (e) => {
     const name = e.target.value.toLowerCase();
@@ -47,14 +47,18 @@ const HomePage = () => {
             <strong>+</strong> Add
           </Button>
           <div
-            className="flex items-center justify-center w-10 pt-1 rounded-full cursor-pointer border border-[var(--color-accent)] hover:bg-gray-100 bg-[var(--color-primary)]"
-            onClick={() => setToggleList()}
+            className={`flex items-center justify-center w-10 pt-1 rounded-full cursor-pointer border border-[var(--color-accent)] ${
+              toggleList
+                ? "bg-[var(--color-primary)] hover:bg-[var(--color-secondary)]"
+                : "bg-[var(--color-white)] hover:bg-[var(--color-pale-hover)]"
+            }`}
+            onClick={() => setToggleList(!toggleList)}
           >
             <ThumbsDown color="#FF0808" />
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-5 gap-x-15 gap-y-10 mb-15">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-15 gap-y-10 mb-15">
         {data?.length > 0 ? (
           selectedProfiles?.map((profile, index) => {
             return (

@@ -12,7 +12,7 @@ const Profiles = ({ profile, index }) => {
 
   return (
     <div
-      className="w-30 md:w-40 h-full cursor-pointer hover:shadow-md hover:scale-102 duration-150 p-0 md:p-3"
+      className="w-30 md:w-40 h-full cursor-pointer hover:shadow-md hover:scale-102 duration-150 p-0 md:p-3 rounded-lg"
       id={index}
       onClick={() => redirect(profile.id)}
     >
@@ -20,8 +20,8 @@ const Profiles = ({ profile, index }) => {
         src={profile?.img_url}
         className="w-full rounded-lg aspect-square object-cover"
       />
-      <div className="font-medium">{profile?.name}</div>
-      <div className="text-sm text-[var(--color-foreground)]">
+      <div className="font-medium truncate">{profile?.name}</div>
+      <div className="text-sm text-[var(--color-foreground)] truncate ">
         {profile?.text}
       </div>
     </div>
