@@ -6,7 +6,7 @@ import * as listModel from "../../models/compliment.model.ts";
 const createList = async (c: Context) => {
   const formData = await c.req.formData();
 
-  const id = c.get("user_id");
+  const user_id = c.get("user_id");
   const name = formData.get("name");
   const text = formData.get("text");
   const imgFile = formData.get("img");
@@ -41,7 +41,7 @@ const createList = async (c: Context) => {
       genOutput.name,
       genOutput.text,
       imgUrl,
-      id
+      user_id
     );
 
     return c.json(
