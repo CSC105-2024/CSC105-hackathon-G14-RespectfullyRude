@@ -7,8 +7,8 @@ const Navbar = () => {
   const location = useLocation();
   const isActive = (path) => {
     return location.pathname.startsWith(path)
-      ? "bg-[var(--color-pale)] text-[var(--color-nav)]"
-      : "text-neutral-600 hover:bg-neutral-100";
+      ? "bg-[var(--color-primary)] text-white"
+      : "text-[var(--color-primary)] hover:bg-neutral-100";
   };
 
   return (
@@ -21,9 +21,29 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex items-center gap-3">
-        <Link to="/dashboard/home">Home</Link>
-        <Link to="/dashboard/home">Generate</Link>
-        <Link to="/dashboard/home">Logout</Link>
+        <Link
+          to="/dashboard/home"
+          className={`px-3 py-2 rounded-md text-sm font-medium ${isActive(
+            "/dashboard/home"
+          )}`}
+        >
+          Home
+        </Link>
+        <Link
+          to="/dashboard/create"
+          className={`px-3 py-2 rounded-md text-sm font-medium ${isActive(
+            "/dashboard/create"
+          )}`}
+        >
+          Generate
+        </Link>
+        <Link
+          to="/dashboard/home"
+          className={`px-3 py-2 rounded-md text-sm font-medium text-[var(--color-primary)] hover:bg-neutral-100
+          )}`}
+        >
+          Logout
+        </Link>
         <Avatar
           onClick={() => {
             navigate("/dashboard/home");

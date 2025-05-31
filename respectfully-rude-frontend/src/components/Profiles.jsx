@@ -10,7 +10,7 @@ const Profiles = ({ profile, index }) => {
 
   return (
     <div
-      className="w-40 h-full cursor-pointer"
+      className="w-40 h-full cursor-pointer hover:shadow-md hover:scale-102 duration-150 p-1"
       id={index}
       onClick={() => redirect(profile.id)}
     >
@@ -19,7 +19,7 @@ const Profiles = ({ profile, index }) => {
         className="w-full rounded-lg aspect-square object-cover"
       />
       <div className="font-medium">{profile.name}</div>
-      <div className="text-sm text-[var(--color-secondary)]">
+      <div className="text-sm text-[var(--color-foreground)]">
         {profile.description}
       </div>
     </div>

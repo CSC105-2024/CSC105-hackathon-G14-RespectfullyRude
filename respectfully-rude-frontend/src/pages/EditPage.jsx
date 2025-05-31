@@ -1,12 +1,12 @@
 import ProfileForm from "@/components/ProfileForm";
 import React from "react";
 
-const CreatePage = () => {
+const EditPage = () => {
   return (
     <div>
-      <ProfileForm mode={"create"} />
+      <ProfileForm mode={"edit"} />
     </div>
   );
 };
 
-export default CreatePage;
+export default EditPage;

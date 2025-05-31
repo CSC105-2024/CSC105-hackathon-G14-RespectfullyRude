@@ -2,17 +2,23 @@ import React from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
+import UploadImage from "./UploadImage";
+import { useNavigate } from "react-router";
 
-const CourseForm = ({ mode }) => {
+const ProfileForm = ({ mode }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="p-5 pl-10 min-w-screen">
       <h1 className="text-3xl font-bold">
         {mode === "create" ? "Create Ugh List" : "Edit Ugh List"}
       </h1>
-      <div className="flex flex-col items-center px-40">
+      <div className="flex flex-col gap-10 items-center px-40">
         <div className="flex gap-10">
-          <div>image box</div>
-          <div className="flex flex-col gap-1">
+          <div>
+            <UploadImage length={1} mode={mode} />
+          </div>
+          <div className="flex flex-col gap-1 justify-center">
             <h2 className="font-semibold">Name</h2>
             <Input
               type="text"
@@ -23,7 +29,7 @@ const CourseForm = ({ mode }) => {
             />
           </div>
         </div>
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full gap-1">
           <h2 className="items-start font-semibold">Description</h2>
           <Textarea
             placeholder="I hate him so much"
@@ -33,10 +39,11 @@ const CourseForm = ({ mode }) => {
           />
         </div>
       </div>
-      <div className="flex justify-center gap-10">
+      <div className="flex justify-center gap-10 mt-10">
         <Button
-          className="text-base bg-[var(--color-primary)] cursor-pointer hover:bg-[var(--color-secondary)] mt-2 px-15"
+          className="text-black bg-[var(--color-pale)] cursor-pointer hover:bg-[var(--color-pale-hover)] mt-2 px-15"
           variant="default"
+          onClick={() => navigate("/dashboard/home")}
         >
           Cancel
         </Button>
@@ -44,11 +51,11 @@ const CourseForm = ({ mode }) => {
           className="text-base bg-[var(--color-primary)] cursor-pointer hover:bg-[var(--color-secondary)] mt-2 px-15"
           variant="default"
         >
-          Create
+          {mode === "create" ? "Create" : "Edit"}
         </Button>
       </div>
     </div>
   );
 };
 
-export default CourseForm;
+export default ProfileForm;

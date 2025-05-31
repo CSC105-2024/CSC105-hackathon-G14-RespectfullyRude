@@ -9,7 +9,10 @@
   --color-foreground: #59738C;
   --color-alert: #EC221F;
   --color-alert-hover: #cf1e1b;
+  --color-accent: #FF0808;
   --color-input-bg: #F7FAFC;
+  --color-pale: #E8EDF2;
+  --color-pale-hover: #d8dbde;
 
   font-family: 'Plus Jakarta Sans', sans-serif;
 
