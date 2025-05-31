@@ -9,45 +9,6 @@ import { useNavigate } from "react-router";
 import Footer from "@/components/layout/Footer";
 import { useDataContext } from "@/hooks/useDataContext";
 
-const profilesData = [
-  {
-    id: 1,
-    name: "Alice Johnson",
-    description: "Frontend Developer from New York",
-    img: "https://img.freepik.com/free-photo/closeup-young-female-professional-making-eye-contact-against-colored-background_662251-651.jpg",
-  },
-  {
-    id: 2,
-    name: "Bob Smith",
-    description: "UX Designer based in London",
-    img: "https://img.freepik.com/free-photo/closeup-young-female-professional-making-eye-contact-against-colored-background_662251-651.jpg",
-  },
-  {
-    id: 3,
-    name: "Charlie Lee",
-    description: "Full Stack Engineer from Seoul",
-    img: "https://img.freepik.com/free-photo/closeup-young-female-professional-making-eye-contact-against-colored-background_662251-651.jpg",
-  },
-  {
-    id: 4,
-    name: "Diana Torres",
-    description: "Project Manager from Toronto",
-    img: "https://img1.wsimg.com/isteam/ip/56c0cc13-b423-4d20-93f5-b95b2a675d4e/Robert-Fishman.jpg",
-  },
-  {
-    id: 5,
-    name: "Ethan Patel",
-    description: "Mobile App Developer in Mumbai",
-    img: "https://img1.wsimg.com/isteam/ip/56c0cc13-b423-4d20-93f5-b95b2a675d4e/Robert-Fishman.jpg",
-  },
-  {
-    id: 6,
-    name: "Fiona Müller",
-    description: "Data Scientist from Berlin",
-    img: "https://img1.wsimg.com/isteam/ip/56c0cc13-b423-4d20-93f5-b95b2a675d4e/Robert-Fishman.jpg",
-  },
-];
-
 const HomePage = () => {
   const { data } = useDataContext();
   const [selectedProfiles, setSelectedProfiles] = useState(data);
