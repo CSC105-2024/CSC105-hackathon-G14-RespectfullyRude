@@ -43,7 +43,7 @@ const HomePage = () => {
   return (
     <div className="flex flex-col items-center justify-around py-5">
       <div className="flex flex-col md:flex-row items-center mb-15 gap-2 md:justify-around w-screen">
-        <div className="flex items-center border border-[var(--color-foreground)] px-3 w-100 rounded-md hover:border-black h-9">
+        <div className="flex items-center border border-[var(--color-foreground)] px-3 max-w-100 rounded-md hover:border-black h-9">
           <Input
             type="text"
             placeholder="Search by Name"
@@ -69,7 +69,7 @@ const HomePage = () => {
             }`}
             onClick={() => setToggleList(!toggleList)}
           >
-            <ThumbsDown color="#FF0808" onClick={onToggle}/>
+            <ThumbsDown color="#FF0808" onClick={onToggle} />
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@ const HomePage = () => {
             );
           })
         ) : (
-          <div className="font-bold text-white h-80 flex items-center mx-auto item-center col-span-4 text-3xl mb-20">
+          <div className="font-bold text-black h-80 flex items-center mx-auto item-center col-span-4 text-3xl mb-20">
             No Ugh Lists found
           </div>
         )}

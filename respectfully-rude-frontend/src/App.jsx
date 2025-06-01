@@ -27,8 +27,6 @@ const App = () => {
     }
   }, [user]);
 
- 
-
   if (loading || (user && !data))
     return (
       <div className="flex items-center justify-center h-screen">
@@ -40,15 +38,24 @@ const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/dashboard" element={<MainLayout />}>
+        <Route
+          path="/login"
+          element={!user ? <LoginPage /> : <Navigate to="/dashboard/home" />}
+        />
+        <Route
+          path="/signup"
+          element={!user ? <SignUpPage /> : <Navigate to="/dashboard/home" />}
+        />
+
+        <Route
+          path="/dashboard"
+          element={user ? <MainLayout /> : <Navigate to="/login" />}
+        >
           <Route path="home" element={<HomePage />} />
           <Route path="profile/:id" element={<IndividualProfile />} />
           <Route path="create" element={<CreatePage />} />
           <Route path="edit/:id" element={<EditPage />} />
           <Route path="settings" element={<ProfileSettings />} />
-
         </Route>
       </Routes>
       <Toaster richColors />
