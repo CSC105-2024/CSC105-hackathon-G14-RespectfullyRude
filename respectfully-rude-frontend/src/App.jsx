@@ -11,6 +11,7 @@ import { Toaster } from "sonner";
 import { useFetch } from "./hooks/useFetch";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { useDataContext } from "./hooks/useDataContext";
+import ProfileSettings from "./pages/ProfileSettings";
 
 const App = () => {
   const { user, dispatch, loading } = useAuthContext();
@@ -25,6 +26,8 @@ const App = () => {
       func();
     }
   }, [user]);
+
+ 
 
   if (loading || (user && !data))
     return (
@@ -44,6 +47,8 @@ const App = () => {
           <Route path="profile/:id" element={<IndividualProfile />} />
           <Route path="create" element={<CreatePage />} />
           <Route path="edit/:id" element={<EditPage />} />
+          <Route path="settings" element={<ProfileSettings />} />
+
         </Route>
       </Routes>
       <Toaster richColors />

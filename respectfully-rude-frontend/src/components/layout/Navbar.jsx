@@ -5,8 +5,12 @@ import img9 from "../../assets/img9.png";
 import AlertBox from "../AlertBox";
 import { useLogout } from "@/hooks/useLogout";
 import { X, Menu } from "lucide-react";
+import { useAuthContext } from "@/hooks/useAuthContext";
 
 const Navbar = () => {
+
+  const {user} = useAuthContext();
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -110,11 +114,11 @@ const Navbar = () => {
           />
           <Avatar
             onClick={() => {
-              navigate("/dashboard/home");
+              navigate("/dashboard/settings");
             }}
             className={`h-auto w-13`}
           >
-            <AvatarImage src={img9} />
+            <AvatarImage src={user.img_url || img9} />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </div>
