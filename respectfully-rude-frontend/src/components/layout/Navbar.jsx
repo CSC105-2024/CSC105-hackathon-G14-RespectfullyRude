@@ -8,8 +8,7 @@ import { X, Menu } from "lucide-react";
 import { useAuthContext } from "@/hooks/useAuthContext";
 
 const Navbar = () => {
-
-  const {user} = useAuthContext();
+  const { user } = useAuthContext();
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
@@ -84,7 +83,10 @@ const Navbar = () => {
           <Link to="/dashboard/home">
             {" "}
             {/* add isActive */}
-            Respectfully Rude
+            <div className="flex items-center">
+              <img src="/logo.png" alt="" className="w-14" />{" "}
+              <span>Respectfully Rude</span>
+            </div>
           </Link>
         </div>
         <div className="hidden md:flex items-center gap-3">
