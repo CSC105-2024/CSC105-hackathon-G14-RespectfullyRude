@@ -21,7 +21,7 @@ export const backhandedOutput = async (
         {
           text: `Generate weird name.
   Use this input -  name: "${name}" and info: ${text} ;
-  I have given you the rudest sentence, addressing them by name in one not too short not too long compliment and make 10 years old understand that (make it more brutal and roast the key features) and generate the img prompt for generating img in another model.
+  I have given you the rudest sentence, addressing them by name in one not too short not too long compliment and make 10 years old understand that (make it more brutal and roast the key features) and generate the img prompt for generating img in another model and  if you encounter any gender related pronouns in the text and name please pass that gender type to the prompt as well which is very important, do not generate child image and cute boy or girl image.
   Respond in strict JSON like:
   {
     
@@ -29,7 +29,7 @@ export const backhandedOutput = async (
       {
         "name": "changed name original name ${name}",
         "text": "Backhanded compliment here.",
-        "prompt": "Expected based on the img and complimented text For example: Make this person look like a complete cartoon loser with: messy hair, drooling mouth, dark eye bags, goofy glasses, a shocked expression, cartoon scars on their cheeks, bad fashion and also very funny and cartoonish style"
+        "prompt": "Expected based on the img and complimented text For example: Make this person look like a complete cartoon loser with: messy hair, drooling mouth, dark eye bags, goofy glasses, a shocked expression, cartoon scars on their cheeks, bad fashion and cartoonish style"
       }
     ]
   }
