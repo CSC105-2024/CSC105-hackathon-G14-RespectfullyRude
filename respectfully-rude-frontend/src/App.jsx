@@ -27,6 +27,8 @@ const App = () => {
     }
   }, [user]);
 
+ 
+
   if (loading || (user && !data))
     return (
       <div className="flex items-center justify-center h-screen">
