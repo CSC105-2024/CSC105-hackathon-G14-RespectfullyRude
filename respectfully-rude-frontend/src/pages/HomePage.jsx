@@ -69,7 +69,7 @@ const HomePage = () => {
             }`}
             onClick={() => setToggleList(!toggleList)}
           >
-            <ThumbsDown color="#FF0808" />
+            <ThumbsDown color="#FF0808" onClick={onToggle}/>
           </div>
         </div>
       </div>
