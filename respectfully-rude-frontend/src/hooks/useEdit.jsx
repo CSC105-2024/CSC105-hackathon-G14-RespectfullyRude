@@ -19,7 +19,7 @@ export const useEdit = () => {
       return;
     }
 
-    if (oldPassword === newPassword) {
+    if (oldPassword === newPassword && oldPassword !== "") {
       toast.error("Looks like your passwords are the same.");
       return;
     }
